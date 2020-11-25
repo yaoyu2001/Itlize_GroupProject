@@ -15,8 +15,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
-        //配置不需要登陆验证
+        //super.configure(http)
         http.authorizeRequests().anyRequest().permitAll().and().logout().permitAll();
     }
 
