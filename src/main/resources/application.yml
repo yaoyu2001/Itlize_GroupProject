@@ -3,9 +3,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: OOoo--33
-    url: jdbc:mysql://localhost:3306/resources_manager_project
-
+    password: Rose890117$
+    url: jdbc:mysql://localhost:3306/springSecurityDemo?serverTimezone=UTC
 
   jpa:
     show-sql: true

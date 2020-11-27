@@ -30,10 +30,13 @@ public class User {
 
     @CreatedDate
     @Column (name = "create_time", updatable = false, nullable = false)
+//    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
     private Date create_time;
 
     @LastModifiedDate
     @Column (name = "update_time", nullable = false)
+//    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+
     private Date update_time;
 
     @Column (name = "main_image")
