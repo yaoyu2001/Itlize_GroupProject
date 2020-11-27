@@ -1,7 +1,7 @@
 package com.itlize.resourcemanagement.entity;
 
 
-import com.sun.javafx.geom.transform.Identity;
+//import com.sun.javafx.geom.transform.Identity;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -18,7 +18,7 @@ public class User {
     @Column (name = "user_id")
     private long userId;
 
-    @Column (name = "user_name", unique = true)
+    @Column (name = "user_name")
     private String userName;
 
     @Column (name = "password")
@@ -29,13 +29,14 @@ public class User {
     private Role role;
 
     @CreatedDate
-    @Column (name = "create_time")
+    @Column (name = "create_time", updatable = false, nullable = false)
 //    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
     private Date create_time;
 
     @LastModifiedDate
-    @Column (name = "update_time")
+    @Column (name = "update_time", nullable = false)
 //    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+
     private Date update_time;
 
     @Column (name = "main_image")
