@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "projects")
 public class Projects {
     @Id
     @GeneratedValue
@@ -24,8 +25,8 @@ public class Projects {
     @Column(name = "update_time")
     private Date update_time;
 
-    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+//    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY)
+//    private Set<User> users = new HashSet<>();
 
     public Projects() {
     }

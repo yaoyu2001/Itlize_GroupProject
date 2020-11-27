@@ -1,28 +1,36 @@
 package com.itlize.resourcemanagement.entity;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Resources")
+@Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
 public class Resources {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
 
-    @Column(name = "resource_name", unique=true)
+    @Column(name = "resource_name")
     private String resourceName;
 
-    @Column(name = "editable", columnDefinition = "false")
-    private boolean editable;
+    @Column(name = "editable")
+    private boolean editable = false;
 
     @Column(name = "item_id")
     private int itemId;
 
-    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
+//    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
+    @CreatedDate
+    @Column (name = "create_time")
     private Date createTime;
 
-    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+    @LastModifiedDate
+    @Column (name = "update_time")
+//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Date updateTime;
 
     public int getResourceCode() {
