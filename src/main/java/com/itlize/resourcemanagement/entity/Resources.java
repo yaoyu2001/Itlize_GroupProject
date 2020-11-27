@@ -6,8 +6,11 @@ import java.util.Date;
 @Entity
 @Table(name = "Resources")
 public class Resources {
+
     @Id
-    @GeneratedValue
+    @Column(name = "resource_Code")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+
     private int resourceCode;
 
     @Column(name = "resource_name", unique=true)
@@ -24,6 +27,18 @@ public class Resources {
 
     @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Date updateTime;
+
+    public Resources() {
+    }
+
+    public Resources(int resourceCode, String resourceName, boolean editable, int itemId, Date createTime, Date updateTime) {
+        this.resourceCode = resourceCode;
+        this.resourceName = resourceName;
+        this.editable = editable;
+        this.itemId = itemId;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 
     public int getResourceCode() {
         return resourceCode;
