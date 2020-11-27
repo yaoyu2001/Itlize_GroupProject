@@ -18,7 +18,7 @@ public class User {
     @Column (name = "user_id")
     private long userId;
 
-    @Column (name = "user_name")
+    @Column (name = "user_name", unique = true)
     private String userName;
 
     @Column (name = "password")
@@ -29,12 +29,12 @@ public class User {
     private Role role;
 
     @CreatedDate
-    @Column (updatable = false, nullable = false)
-    private Date timeCreate;
+    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
+    private Date create_time;
 
     @LastModifiedDate
-    @Column (nullable = false)
-    private Date lastModified;
+    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+    private Date update_time;
 
     @Column (name = "main_image")
     private String mainImage;
@@ -42,11 +42,11 @@ public class User {
     @Column (name = "email")
     private String email;
 
-    @Column (name = "first_name")
-    private String firstname;
+    @Column (name = "first_name", nullable = false)
+    private String first_name;
 
-    @Column (name = "last_name")
-    private String lastname;
+    @Column (name = "last_name", nullable = false)
+    private String last_name;
 
     //Constructors
     public User() {
@@ -56,8 +56,8 @@ public class User {
     public User( String user_name, String password, String firstName, String lastName ) {
         this.userName = user_name;
         this.password = password;
-        this.firstname = firstName;
-        this.lastname = lastName;
+        this.first_name = firstName;
+        this.last_name = lastName;
     }
 
 
@@ -88,11 +88,11 @@ public class User {
 
 
     public Date getTimeCreate() {
-        return timeCreate;
+        return create_time;
     }
 
     public Date getLastUpdated() {
-        return lastModified;
+        return update_time;
     }
 
     public String getMainImage() {
@@ -114,20 +114,20 @@ public class User {
 
 
     public String getFirstname() {
-        return firstname;
+        return first_name;
     }
 
     public void setFirstname( String firstname ) {
-        this.firstname = firstname;
+        this.first_name = firstname;
     }
 
 
     public String getLastname() {
-        return lastname;
+        return last_name;
     }
 
     public void setLastname( String lastname ) {
-        this.lastname = lastname;
+        this.last_name = lastname;
     }
 
     @Override
@@ -135,8 +135,8 @@ public class User {
         return "User{" +
                 "id='" + userId + '\'' +
                 ", user_name='" + userName + '\'' +
-                ", create_time=" + timeCreate +
-                ", update_time=" + lastModified +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
                 '}';
     }
 }
