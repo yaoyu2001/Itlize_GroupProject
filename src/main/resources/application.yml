@@ -4,7 +4,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: Rose890117$
-    url: jdbc:mysql://localhost:3306/springSecurityDemo?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/resources_management?serverTimezone=UTC
+
 
   jpa:
     show-sql: true
