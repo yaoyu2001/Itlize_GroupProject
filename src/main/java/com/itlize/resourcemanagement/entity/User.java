@@ -139,5 +139,4 @@ public class User {
                 ", update_time=" + lastModified +
                 '}';
     }
-
 }
