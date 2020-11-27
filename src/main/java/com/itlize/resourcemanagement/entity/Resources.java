@@ -1,30 +1,28 @@
 package com.itlize.resourcemanagement.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class ResourceEntity {
+@Table(name = "Resources")
+public class Resources {
     @Id
     @GeneratedValue
     private int resourceCode;
 
-    @Column(name = "resource_name")
+    @Column(name = "resource_name", unique=true)
     private String resourceName;
 
-    @Column(name = "editable")
+    @Column(name = "editable", columnDefinition = "false")
     private boolean editable;
 
     @Column(name = "item_id")
     private int itemId;
 
-    @Column(name = "create_time")
+    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
     private Date createTime;
 
-    @Column(name = "update_time")
+    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Date updateTime;
 
     public int getResourceCode() {
