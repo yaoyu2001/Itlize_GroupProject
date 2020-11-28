@@ -16,16 +16,16 @@ public class Resources {
     @Column(name = "resource_name", unique=true)
     private String resourceName;
 
-    @Column(name = "editable", columnDefinition = "false")
+    @Column(name = "editable")
     private boolean editable;
 
     @Column(name = "item_id")
     private int itemId;
 
-    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
+    @Column (name = "create_time", updatable = false, nullable = false)
     private Date createTime;
 
-    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+    @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
     public Resources() {
