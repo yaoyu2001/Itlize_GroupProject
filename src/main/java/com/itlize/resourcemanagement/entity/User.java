@@ -8,6 +8,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "user", uniqueConstraints = {@UniqueConstraint (columnNames = "user_name")})
@@ -51,6 +53,9 @@ public class User {
     @Column (name = "last_name", nullable = false)
     private String last_name;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserToProject> UserToProjectSet = new HashSet<>();
+
     //Constructors
     public User() {
     }
@@ -64,82 +69,83 @@ public class User {
     }
 
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId( long userId ) {
-        this.userId = userId;
-    }
-
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName( String userName ) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Role getRole() {
         return role;
     }
 
-    public void setRole( Role role ) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-
-    public Date getTimeCreate() {
+    public Date getCreate_time() {
         return create_time;
     }
 
-    public Date getLastUpdated() {
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
         return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
     }
 
     public String getMainImage() {
         return mainImage;
     }
 
-    public void setMainImage( String mainImage ) {
+    public void setMainImage(String mainImage) {
         this.mainImage = mainImage;
     }
-
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail( String email ) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-
-    public String getFirstname() {
+    public String getFirst_name() {
         return first_name;
     }
 
-    public void setFirstname( String firstname ) {
-        this.first_name = firstname;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-
-    public String getLastname() {
+    public String getLast_name() {
         return last_name;
     }
 
-    public void setLastname( String lastname ) {
-        this.last_name = lastname;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + userId + '\'' +
-                ", user_name='" + userName + '\'' +
-                ", create_time=" + create_time +
-                ", update_time=" + update_time +
-                '}';
+    public Set<UserToProject> getUserToProjectSet() {
+        return UserToProjectSet;
+    }
+
+    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+        UserToProjectSet = userToProjectSet;
     }
 }
