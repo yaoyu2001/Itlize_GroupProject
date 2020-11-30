@@ -4,16 +4,16 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.HashSet;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "projects")
 public class Projects {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
-    private String project_id;
+    private int project_id;
 
     @Column(name = "project_name")
     private String project_name;
