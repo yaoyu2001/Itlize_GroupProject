@@ -23,7 +23,6 @@ public class Resources {
         this.updateTime = updateTime;
     }
 
-
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
