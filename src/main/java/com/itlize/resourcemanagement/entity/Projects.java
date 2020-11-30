@@ -71,6 +71,15 @@ public class Projects {
     public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
         UserToProjectSet = userToProjectSet;
     }
+
+    public Set<ProjectToResource> getProjectToResource() {
+        return projectToResource;
+    }
+
+    public void setProjectToResource(Set<ProjectToResource> projectToResource) {
+        this.projectToResource = projectToResource;
+    }
+
     @Override
     public String toString() {
         return "Projects{" +

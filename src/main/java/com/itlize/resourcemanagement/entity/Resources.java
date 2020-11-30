@@ -46,6 +46,7 @@ public class Resources {
     @LastModifiedDate
     @Column (name = "update_time", nullable = false)
 //    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+
     @OneToMany(mappedBy = "resource")
     private Set<ProjectToResource> projectToResource;
 
