@@ -13,7 +13,7 @@ public class Projects {
     @Id
     @GeneratedValue
     @Column(name = "project_id")
-    private String id;
+    private String project_id;
 
     @Column(name = "project_name")
     private String project_name;
@@ -26,8 +26,9 @@ public class Projects {
     private Date update_time;
 
 
-//    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY)
-//    private Set<User> users = new HashSet<>();
+    @OneToMany(mappedBy = "projects")
+    private Set<UserToProject> UserToProjectSet;
+
 
     public Projects() {
     }
@@ -62,10 +63,17 @@ public class Projects {
         this.update_time = update_time;
     }
 
+    public Set<UserToProject> getUserToProjectSet() {
+        return UserToProjectSet;
+    }
+
+    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+        UserToProjectSet = userToProjectSet;
+    }
     @Override
     public String toString() {
         return "Projects{" +
-                "id='" + id + '\'' +
+                "id='" + project_id + '\'' +
                 ", project_name='" + project_name + '\'' +
                 ", create_time=" + create_time +
                 ", update_time=" + update_time +

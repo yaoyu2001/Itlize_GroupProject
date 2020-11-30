@@ -1,5 +1,6 @@
 package com.itlize.resourcemanagement.entity;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -7,13 +8,29 @@ import javax.persistence.*;
 public class UserToProject {
     @Id
     @GeneratedValue
-    private long userProjectId;
+    private int userprojectid;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userID", referencedColumnName = "user_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "projectID", referencedColumnName = "project_id")
-    private Projects project;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "project_id")
+    private Projects projects;
+
+    public Projects getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Projects projects) {
+        this.projects = projects;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -1,32 +1,14 @@
 package com.itlize.resourcemanagement.entity;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Resources")
+@Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
 public class Resources {
-
-    @Id
-    @Column(name = "resource_Code")
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-
-    private int resourceCode;
-
-    @Column(name = "resource_name", unique=true)
-    private String resourceName;
-
-    @Column(name = "editable")
-    private boolean editable;
-
-    @Column(name = "item_id")
-    private int itemId;
-
-    @Column (name = "create_time", updatable = false, nullable = false)
-    private Date createTime;
-
-    @Column(name = "update_time", nullable = false)
-    private Date updateTime;
 
     public Resources() {
     }
@@ -39,6 +21,33 @@ public class Resources {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
+
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int resourceCode;
+
+    @Column(name = "resource_name")
+    private String resourceName;
+
+    @Column(name = "editable")
+    private boolean editable;
+
+
+    @Column(name = "item_id")
+    private int itemId;
+
+//    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
+    @CreatedDate
+    @Column (name = "create_time", updatable = false, nullable = false)
+    private Date createTime;
+
+    @LastModifiedDate
+    @Column (name = "update_time", nullable = false)
+//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+
+    private Date updateTime;
+
 
     public int getResourceCode() {
         return resourceCode;
