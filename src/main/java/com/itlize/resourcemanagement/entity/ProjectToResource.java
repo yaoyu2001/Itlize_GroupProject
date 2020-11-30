@@ -9,11 +9,35 @@ public class ProjectToResource {
     @GeneratedValue
     private int projectResourceId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "resource_code", referencedColumnName = "resource_code")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "resourceCode", referencedColumnName = "resource_code")
     private Resources resource;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "projectID", referencedColumnName = "project_id")
     private Projects project;
+
+    public int getProjectResourceId() {
+        return projectResourceId;
+    }
+
+    public void setProjectResourceId(int projectResourceId) {
+        this.projectResourceId = projectResourceId;
+    }
+
+    public Resources getResource() {
+        return resource;
+    }
+
+    public void setResource(Resources resource) {
+        this.resource = resource;
+    }
+
+    public Projects getProject() {
+        return project;
+    }
+
+    public void setProject(Projects project) {
+        this.project = project;
+    }
 }
