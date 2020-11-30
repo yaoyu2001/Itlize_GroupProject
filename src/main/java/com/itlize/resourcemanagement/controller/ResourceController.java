@@ -35,11 +35,11 @@ public class ResourceController {
      * creat a resources
      */
     @PostMapping("/resources")
-    public Resources create(@RequestParam("name") String name,
-                             @RequestParam("money") Integer code) {
+//    public Resources create(@RequestParam("name") String name,
+//                             @RequestParam("resource_code") Integer code) {
+        public Resources create(@RequestParam("name") String name ) {
         Resources resources = new Resources();
         resources.setResourceName(name);
-        resources.setResourceCode(code);
         return service.save(resources);
     }
 

@@ -5,9 +5,10 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+@Table(name = "resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
 public class Resources {
 
     public Resources() {
@@ -18,8 +19,8 @@ public class Resources {
         this.resourceName = resourceName;
 //        this.editable = editable;
         this.itemId = itemId;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+//        this.createTime = createTime;
+//        this.updateTime = updateTime;
     }
 
 
@@ -38,15 +39,19 @@ public class Resources {
     private int itemId;
 
 //    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
-    @CreatedDate
-    @Column (name = "create_time", updatable = false, nullable = false)
-    private Date createTime;
+//    @CreatedDate
+//    @Column (name = "create_time", updatable = false, nullable = true)
+//    private Date createTime;
+//
+//    @LastModifiedDate
+//    @Column (name = "update_time", nullable = true)
+////    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+//    private Date updateTime;
 
-    @LastModifiedDate
-    @Column (name = "update_time", nullable = false)
-//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
-
-    private Date updateTime;
+    @OneToMany(fetch=FetchType.LAZY,
+            mappedBy="resources",
+            cascade = CascadeType.ALL)
+    private List<ResourceColumn> ResourceColumn;
 
 
     public int getResourceCode() {
@@ -81,19 +86,19 @@ public class Resources {
         this.itemId = itemId;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+//    public Date getCreateTime() {
+//        return createTime;
+//    }
+//
+//    public void setCreateTime(Date createTime) {
+//        this.createTime = createTime;
+//    }
+//
+//    public Date getUpdateTime() {
+//        return updateTime;
+//    }
+//
+//    public void setUpdateTime(Date updateTime) {
+//        this.updateTime = updateTime;
+//    }
 }

@@ -16,7 +16,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http)
-        http.authorizeRequests().anyRequest().permitAll().and().logout().permitAll();
+        http.csrf().disable();
+//        http.authorizeRequests().anyRequest().permitAll().and().logout().permitAll();
     }
 
 
