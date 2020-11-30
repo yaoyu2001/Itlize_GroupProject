@@ -25,8 +25,8 @@ public class Projects {
     @Column(name = "update_time")
     private Date update_time;
 
-    @OneToMany(mappedBy = "projects")
-    private Set<UserToProject> UserToProjectSet;
+//    @OneToMany(mappedBy = "projects")
+//    private Set<UserToProject> UserToProjectSet;
 
 
     public Projects() {
@@ -62,13 +62,13 @@ public class Projects {
         this.update_time = update_time;
     }
 
-    public Set<UserToProject> getUserToProjectSet() {
-        return UserToProjectSet;
-    }
+//    public Set<UserToProject> getUserToProjectSet() {
+//        return UserToProjectSet;
+//    }
 
-    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-        UserToProjectSet = userToProjectSet;
-    }
+//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+//        UserToProjectSet = userToProjectSet;
+//    }
     @Override
     public String toString() {
         return "Projects{" +

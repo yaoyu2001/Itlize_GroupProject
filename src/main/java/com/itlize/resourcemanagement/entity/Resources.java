@@ -16,7 +16,7 @@ public class Resources {
     public Resources(int resourceCode, String resourceName, boolean editable, int itemId, Date createTime, Date updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
-        this.editable = editable;
+//        this.editable = editable;
         this.itemId = itemId;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -30,8 +30,8 @@ public class Resources {
     @Column(name = "resource_name")
     private String resourceName;
 
-    @Column(name = "editable")
-    private boolean editable;
+//    @Column(name = "editable")
+//    private boolean editable;
 
 
     @Column(name = "item_id")
@@ -65,13 +65,13 @@ public class Resources {
         this.resourceName = resourceName;
     }
 
-    public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
-    }
+//    public boolean isEditable() {
+//        return editable;
+//    }
+//
+//    public void setEditable(boolean editable) {
+//        this.editable = editable;
+//    }
 
     public int getItemId() {
         return itemId;

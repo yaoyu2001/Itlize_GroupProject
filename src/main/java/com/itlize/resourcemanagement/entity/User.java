@@ -53,8 +53,8 @@ public class User {
     @Column (name = "last_name", nullable = false)
     private String last_name;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserToProject> UserToProjectSet = new HashSet<>();
+//    @OneToMany(mappedBy = "user")
+//    private Set<UserToProject> UserToProjectSet = new HashSet<>();
 
     //Constructors
     public User() {
@@ -141,11 +141,11 @@ public class User {
         this.last_name = last_name;
     }
 
-    public Set<UserToProject> getUserToProjectSet() {
-        return UserToProjectSet;
-    }
-
-    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-        UserToProjectSet = userToProjectSet;
-    }
+//    public Set<UserToProject> getUserToProjectSet() {
+//        return UserToProjectSet;
+//    }
+//
+//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+//        UserToProjectSet = userToProjectSet;
+//    }
 }
