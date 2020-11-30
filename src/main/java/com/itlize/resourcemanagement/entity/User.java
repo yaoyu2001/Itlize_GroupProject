@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "user_id")
-    private long userId;
+    private int userId;
 
     @Column (name = "user_name")
     private String userName;
@@ -61,13 +61,15 @@ public class User {
     }
 
 
-    public User( String user_name, String password, String firstName, String lastName ) {
-        this.userName = user_name;
+    public User(String userName, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
+        this.userName = userName;
         this.password = password;
-        this.first_name = firstName;
-        this.last_name = lastName;
+        this.create_time = create_time;
+        this.update_time = update_time;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
-
 
     public String getUserName() {
         return userName;

@@ -10,7 +10,7 @@ public class ProjectToResource {
     private int projectResourceId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "resourceCode", referencedColumnName = "resource_code")
+    @JoinColumn(name = "resourceCode", referencedColumnName = "resourceCode")
     private Resources resource;
 
     @ManyToOne(cascade = CascadeType.ALL)

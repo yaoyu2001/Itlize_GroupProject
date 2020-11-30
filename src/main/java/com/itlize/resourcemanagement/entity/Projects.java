@@ -4,7 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.HashSet;
+
 import java.util.Set;
 
 @Entity
@@ -24,7 +24,6 @@ public class Projects {
 
     @Column(name = "update_time")
     private Date update_time;
-
 
     @OneToMany(mappedBy = "projects")
     private Set<UserToProject> UserToProjectSet;
