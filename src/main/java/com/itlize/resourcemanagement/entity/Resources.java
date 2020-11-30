@@ -5,6 +5,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
@@ -45,6 +46,9 @@ public class Resources {
     @LastModifiedDate
     @Column (name = "update_time", nullable = false)
 //    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+
+    @OneToMany(mappedBy = "resource")
+    private Set<ProjectToResource> projectToResource;
 
     private Date updateTime;
 
