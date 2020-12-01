@@ -15,13 +15,13 @@ public class Resource {
     public Resource() {
     }
 
-    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Date createTime, Date updateTime) {
+    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
         this.editable = editable;
         this.itemId = itemId;
-//        this.createTime = createTime;
-//        this.updateTime = updateTime;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 
 
@@ -39,13 +39,13 @@ public class Resource {
     @Column(name = "item_id")
     private int itemId;
 
-    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
+    @CreatedDate
+    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp createTime;
-//
-//    @LastModifiedDate
-    @Column (name = "update_time", nullable = true)
-//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
-    private Date updateTime;
+
+    @LastModifiedDate
+    @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private Timestamp updateTime;
 
     @OneToMany(fetch=FetchType.LAZY,
             mappedBy="resource",
@@ -85,19 +85,19 @@ public class Resource {
         this.itemId = itemId;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
-//
-//    public void setCreateTime(Date createTime) {
-//        this.createTime = createTime;
-//    }
-//
-//    public Date getUpdateTime() {
-//        return updateTime;
-//    }
-//
-//    public void setUpdateTime(Date updateTime) {
-//        this.updateTime = updateTime;
-//    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 }

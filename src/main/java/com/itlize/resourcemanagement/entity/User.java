@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,15 +31,14 @@ public class User {
     private Role role;
 
     @CreatedDate
-    @Column (name = "create_time", updatable = false, nullable = false)
+    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 //    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
-    private Date create_time;
+    private Timestamp create_time;
 
     @LastModifiedDate
-    @Column (name = "update_time", nullable = false)
+    @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
 //    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
-
-    private Date update_time;
+    private Timestamp update_time;
 
     @Column (name = "main_image")
     private String mainImage;
@@ -59,7 +59,7 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
+    public User(String userName, String password, Timestamp create_time, Timestamp update_time, String email, String first_name, String last_name) {
         this.userName = userName;
         this.password = password;
         this.create_time = create_time;
@@ -87,19 +87,19 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    public Date getCreate_time() {
+    public Timestamp getCreate_time() {
         return create_time;
     }
-    public void setCreate_time(Date create_time) {
+    public void setCreate_time(Timestamp create_time) {
         this.create_time = create_time;
     }
-    public Date getUpdate_time() {
+    public Timestamp getUpdate_time() {
         return update_time;
     }
-    public void setUpdate_time(Date update_time) {
+    public void setUpdate_time(Timestamp update_time) {
         this.update_time = update_time;
     }
-    public String getMainImage() {
+        public String getMainImage() {
         return mainImage;
     }
     public void setMainImage(String mainImage) {
