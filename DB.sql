@@ -12,7 +12,7 @@ CREATE TABLE User(
                      Firstname varchar(50) NOT NULL ,
                      Lastname varchar(50) NOT NULL
 );
-CREATE TABLE projects(
+CREATE TABLE project(
                          project_id int NOT NULL Auto_increment primary key ,
                          project_name char(50) DEFAULT NULL,
                          create_time DATETIME  default CURRENT_TIMESTAMP,
@@ -31,12 +31,12 @@ CREATE TABLE user_projects(
                               user_id int NOT NULL,
                               project_id int NOT NULL,
                               FOREIGN KEY (user_id) references user(user_id),
-                              FOREIGN KEY (project_id) references projects(project_id)
+                              FOREIGN KEY (project_id) references project(project_id)
 );
 CREATE TABLE project_resources(
                                   id int NOT NULL AUTO_INCREMENT primary key,
                                   project_id int NOT NULL,
                                   Resource_code int(6) NOT NULL,
-                                  FOREIGN KEY (project_id) references projects(project_id),
+                                  FOREIGN KEY (project_id) references project(project_id),
                                   FOREIGN KEY (Resource_code) references Resources(Resource_code)
 )

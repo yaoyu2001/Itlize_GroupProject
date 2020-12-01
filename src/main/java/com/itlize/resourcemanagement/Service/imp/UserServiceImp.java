@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.services.Impl;
+package com.itlize.resourcemanagement.Service.imp;
 
 import com.itlize.resourcemanagement.DAO.UserDAO;
 import com.itlize.resourcemanagement.entity.User;

@@ -8,7 +8,7 @@ public interface ProjectService {
 
     List<Project> findAll();
 
-    public Project save ( Project project);
+    public Project save (Project project);
 
     public void deleteById(Integer Id);
     }
