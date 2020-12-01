@@ -53,7 +53,7 @@ public class User {
     private String last_name;
 
     @OneToMany(mappedBy = "user")
-    private Set<UserToProject> UserToProjectSet = new HashSet<>();
+    private Set<Project> UserToProjectSet = new HashSet<>();
 
     //Constructors
     public User() {
@@ -123,10 +123,10 @@ public class User {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
-    public Set<UserToProject> getUserToProjectSet() {
-        return UserToProjectSet;
-    }
-    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-        UserToProjectSet = userToProjectSet;
-    }
+//    public Set<UserToProject> getUserToProjectSet() {
+//        return UserToProjectSet;
+//    }
+//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+//        UserToProjectSet = userToProjectSet;
+//    }
 }

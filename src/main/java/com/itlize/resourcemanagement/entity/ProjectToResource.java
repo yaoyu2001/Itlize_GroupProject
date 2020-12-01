@@ -1,6 +1,7 @@
 package com.itlize.resourcemanagement.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "project_resources")
@@ -8,6 +9,9 @@ public class ProjectToResource {
     @Id
     @GeneratedValue
     private int projectResourceId;
+
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp create_time;
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -41,5 +45,13 @@ public class ProjectToResource {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Timestamp getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
     }
 }
