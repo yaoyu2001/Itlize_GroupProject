@@ -40,11 +40,11 @@ public class Resource {
     private int itemId;
 
     @CreatedDate
-    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = true)
     private Timestamp createTime;
 
     @LastModifiedDate
-    @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",nullable = true)
     private Timestamp updateTime;
 
     @OneToMany(fetch=FetchType.LAZY,
