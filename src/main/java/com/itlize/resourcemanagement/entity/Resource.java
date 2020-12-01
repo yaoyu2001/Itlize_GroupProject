@@ -39,13 +39,13 @@ public class Resource {
     @Column(name = "item_id")
     private int itemId;
 
-    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
     private Timestamp createTime;
 //
 //    @LastModifiedDate
-//    @Column (name = "update_time", nullable = true)
-////    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
-//    private Date updateTime;
+    @Column (name = "update_time", nullable = true)
+//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
+    private Date updateTime;
 
     @OneToMany(fetch=FetchType.LAZY,
             mappedBy="resource",
