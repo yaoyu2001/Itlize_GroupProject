@@ -1,17 +1,12 @@
 package com.itlize.resourcemanagement.entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "resource_column")
 public class ResourceColumn {
 
   @Id
-  @GeneratedValue (strategy = GenerationType.IDENTITY)
   private long columnId;
 
   @Column(name = "resource_column_name")
@@ -22,8 +17,8 @@ public class ResourceColumn {
 
   @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="resources_id")
-  private Resources resources;
+  @JoinColumn(name="resource_id")
+  private Resource resource;
 
 
 

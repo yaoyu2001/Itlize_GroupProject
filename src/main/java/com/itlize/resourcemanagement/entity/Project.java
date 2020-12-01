@@ -4,16 +4,15 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.HashSet;
+
 import java.util.Set;
 
 @Entity
-@Table(name = "projects")
-public class Projects {
+@Table(name = "project")
+public class Project {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "project_id")
-    private String project_id;
+    private int project_id;
 
     @Column(name = "project_name")
     private String project_name;
@@ -25,14 +24,16 @@ public class Projects {
     @Column(name = "update_time")
     private Date update_time;
 
-//    @OneToMany(mappedBy = "projects")
-//    private Set<UserToProject> UserToProjectSet;
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
+    private Set<UserToProject> UserToProjectSet;
 
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
+    private Set<ProjectToResource> projectToResource;
 
-    public Projects() {
+    public Project() {
     }
 
-    public Projects(String project_name, Date create_time, Date update_time) {
+    public Project( String project_name, Date create_time, Date update_time) {
         this.project_name = project_name;
         this.create_time = create_time;
         this.update_time = update_time;
@@ -62,13 +63,22 @@ public class Projects {
         this.update_time = update_time;
     }
 
-//    public Set<UserToProject> getUserToProjectSet() {
-//        return UserToProjectSet;
+    public Set<UserToProject> getUserToProjectSet() {
+        return UserToProjectSet;
+    }
+
+    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+        UserToProjectSet = userToProjectSet;
+    }
+
+//    public Set<ProjectToResource> getProjectToResource() {
+//        return projectToResource;
+//    }
+//
+//    public void setProjectToResource(Set<ProjectToResource> projectToResource) {
+//        this.projectToResource = projectToResource;
 //    }
 
-//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-//        UserToProjectSet = userToProjectSet;
-//    }
     @Override
     public String toString() {
         return "Projects{" +

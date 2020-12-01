@@ -15,8 +15,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http)
         http.csrf().disable();
+
+        //super.configure(http)
+
 //        http.authorizeRequests().anyRequest().permitAll().and().logout().permitAll();
     }
 
@@ -44,10 +46,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // Override a user information, just for test
-    @Override
-    protected void configure( AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("yongchang").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
-        auth.inMemoryAuthentication().withUser("linfeng").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
-        auth.inMemoryAuthentication().withUser("aly").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
-    }
+//    @Override
+//    protected void configure( AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("yongchang").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
+//        auth.inMemoryAuthentication().withUser("linfeng").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
+//        auth.inMemoryAuthentication().withUser("aly").password(new BCryptPasswordEncoder().encode("123456")).roles("ADMIN","USER");
+//    }
 }

@@ -1,15 +1,11 @@
 package com.itlize.resourcemanagement.controller;
 
-import com.itlize.resourcemanagement.entity.Resources;
+import com.itlize.resourcemanagement.entity.Resource;
 import com.itlize.resourcemanagement.service.ResourceService;
-import com.itlize.resourcemanagement.service.impl.ResourceServiceImpl;
-import com.itlize.resourcemanagement.DAO.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by yang shu
@@ -27,7 +23,7 @@ public class ResourceController {
      * get all resources from database
      */
     @GetMapping("/resources")
-    public List<Resources> list() {
+    public List<Resource> list() {
         return service.findAll();
     }
 
@@ -35,19 +31,19 @@ public class ResourceController {
      * creat a resources
      */
     @PostMapping("/resources")
-//    public Resources create(@RequestParam("name") String name,
-//                             @RequestParam("resource_code") Integer code) {
-        public Resources create(@RequestParam("name") String name ) {
-        Resources resources = new Resources();
-        resources.setResourceName(name);
-        return service.save(resources);
+    public Resource create(@RequestParam("name") String name,
+                             @RequestParam("resource_code") Integer code) {
+        Resource resource = new Resource();
+        resource.setResourceName(name);
+        resource.setResourceCode(code);
+        return service.save(resource);
     }
 
     /**
      * find a resources by its id
      */
     @GetMapping("/resources/{id}")
-    public Resources findById(@PathVariable("id") Integer id) {
+    public Resource findById( @PathVariable("id") Integer id) {
         return service.findOneById(id);
     }
 
@@ -55,11 +51,11 @@ public class ResourceController {
      * updated a resources information
      */
     @PutMapping("/resources/{id}")
-    public Resources update(@PathVariable("id") Integer id,
-                             @RequestParam("name") String name) {
-        Resources resources= service.findOneById(id);
-        resources.setResourceName(name);
-        return service.save(resources);
+    public Resource update( @PathVariable("id") Integer id,
+                            @RequestParam("name") String name) {
+        Resource resource = service.findOneById(id);
+        resource.setResourceName(name);
+        return service.save(resource);
     }
 
 }

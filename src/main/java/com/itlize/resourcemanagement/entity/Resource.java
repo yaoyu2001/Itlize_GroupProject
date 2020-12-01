@@ -4,20 +4,21 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
-public class Resources {
+@Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+public class Resource {
 
-    public Resources() {
+    public Resource() {
     }
 
-    public Resources(int resourceCode, String resourceName, boolean editable, int itemId, Date createTime, Date updateTime) {
+    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Date createTime, Date updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
-//        this.editable = editable;
+        this.editable = editable;
         this.itemId = itemId;
 //        this.createTime = createTime;
 //        this.updateTime = updateTime;
@@ -25,23 +26,21 @@ public class Resources {
 
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+//    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
 
     @Column(name = "resource_name")
     private String resourceName;
 
-//    @Column(name = "editable")
-//    private boolean editable;
+    @Column(name = "editable")
+    private boolean editable = false;
 
 
     @Column(name = "item_id")
     private int itemId;
 
-//    @Column (name = "create_time",columnDefinition = "Current_timestamp", updatable = false, nullable = false)
-//    @CreatedDate
-//    @Column (name = "create_time", updatable = false, nullable = true)
-//    private Date createTime;
+    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp createTime;
 //
 //    @LastModifiedDate
 //    @Column (name = "update_time", nullable = true)
@@ -49,7 +48,7 @@ public class Resources {
 //    private Date updateTime;
 
     @OneToMany(fetch=FetchType.LAZY,
-            mappedBy="resources",
+            mappedBy="resource",
             cascade = CascadeType.ALL)
     private List<ResourceColumn> ResourceColumn;
 
@@ -70,13 +69,13 @@ public class Resources {
         this.resourceName = resourceName;
     }
 
-//    public boolean isEditable() {
-//        return editable;
-//    }
-//
-//    public void setEditable(boolean editable) {
-//        this.editable = editable;
-//    }
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
 
     public int getItemId() {
         return itemId;
@@ -86,9 +85,9 @@ public class Resources {
         this.itemId = itemId;
     }
 
-//    public Date getCreateTime() {
-//        return createTime;
-//    }
+    public Date getCreateTime() {
+        return createTime;
+    }
 //
 //    public void setCreateTime(Date createTime) {
 //        this.createTime = createTime;
