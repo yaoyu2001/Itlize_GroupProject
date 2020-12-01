@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
-public class Resources {
+@Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+public class Resource {
 
-    public Resources() {
+    public Resource() {
     }
 
-    public Resources(int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
+    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
         this.editable = editable;
@@ -25,20 +25,19 @@ public class Resources {
     }
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+//    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
 
     @Column(name = "resource_name")
     private String resourceName;
 
     @Column(name = "editable")
-    private boolean editable;
+    private boolean editable = false;
 
 
     @Column(name = "item_id")
     private int itemId;
 
-//    @Column (name = "create_time",columnDefinition = "DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP", updatable = false, nullable = false)
     @CreatedDate
     @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp createTime;
@@ -50,6 +49,7 @@ public class Resources {
 
     @OneToMany(mappedBy = "resource")
     private Set<ProjectToResource> projectToResource;
+
 
     public int getResourceCode() {
         return resourceCode;

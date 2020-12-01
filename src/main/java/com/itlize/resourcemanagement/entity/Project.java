@@ -9,11 +9,10 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "projects")
-public class Projects {
+@Table(name = "project")
+public class Project {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "project_id")
     private int project_id;
 
     @Column(name = "project_name")
@@ -25,18 +24,16 @@ public class Projects {
     @Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp update_time;
 
-    @OneToMany(mappedBy = "projects")
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
     private Set<UserToProject> UserToProjectSet;
 
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
+    private Set<ProjectToResource> projectToResource;
 
-    @OneToMany(mappedBy = "project")
-    private Set<ProjectToResource >projectToResource;
-
-
-    public Projects() {
+    public Project() {
     }
 
-    public Projects(String project_name, Timestamp create_time, Timestamp update_time) {
+    public Project( String project_name, Timestamp create_time, Timestamp update_time) {
         this.project_name = project_name;
         this.create_time = create_time;
         this.update_time = update_time;

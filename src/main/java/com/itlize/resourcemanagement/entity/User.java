@@ -18,7 +18,6 @@ public class User {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "user_id")
     private int userId;
 
     @Column (name = "user_name")
@@ -38,8 +37,6 @@ public class User {
 
     @LastModifiedDate
     @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-//    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
-
     private Timestamp update_time;
 
     @Column (name = "main_image")
@@ -100,6 +97,7 @@ public class User {
     public void setUpdate_time(Timestamp update_time) {
         this.update_time = update_time;
     }
+
     public String getMainImage() {
         return mainImage;
     }

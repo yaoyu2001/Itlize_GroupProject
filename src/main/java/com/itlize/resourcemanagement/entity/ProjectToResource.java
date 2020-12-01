@@ -9,13 +9,16 @@ public class ProjectToResource {
     @GeneratedValue
     private int projectResourceId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "resourceCode", referencedColumnName = "resourceCode")
-    private Resources resource;
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="resources_id")
+    private Resource resource;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "projectID", referencedColumnName = "project_id")
-    private Projects project;
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "project_id")
+    private Project project;
+
 
     public int getProjectResourceId() {
         return projectResourceId;
@@ -25,19 +28,19 @@ public class ProjectToResource {
         this.projectResourceId = projectResourceId;
     }
 
-    public Resources getResource() {
+    public Resource getResource() {
         return resource;
     }
 
-    public void setResource(Resources resource) {
+    public void setResource( Resource resource) {
         this.resource = resource;
     }
 
-    public Projects getProject() {
+    public Project getProject() {
         return project;
     }
 
-    public void setProject(Projects project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 }
