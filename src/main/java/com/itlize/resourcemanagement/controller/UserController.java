@@ -34,9 +34,10 @@ public class UserController {
         user.setEmail(email);
         user.setFirst_name(Fname);
         user.setLast_name(Lname);
+
         return service.save(user);
     }
-    @GetMapping("/Users/{id}")
+    @GetMapping("/User/{id}")
     public User findById(@PathVariable("id") Integer id) {
         return service.findOneById(id);
     }

@@ -32,4 +32,6 @@ public class UserServiceImp implements UserService {
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }
+
+    public User findUserByUserName(String name){return userDAO.findUserByUserName(name);}
 }

@@ -13,4 +13,6 @@ public interface UserService {
 
     public void deleteById(Integer Id);
 
+    public User findUserByUserName(String name);
+
 }
