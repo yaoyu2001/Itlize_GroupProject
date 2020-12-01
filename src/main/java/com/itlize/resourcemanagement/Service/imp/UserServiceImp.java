@@ -30,7 +30,6 @@ public class UserServiceImp implements UserService {
         return userDAO.save(user);
     }
 
-
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }

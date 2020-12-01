@@ -3,7 +3,9 @@ package com.itlize.resourcemanagement.controller;
 import com.itlize.resourcemanagement.entity.Role;
 import com.itlize.resourcemanagement.entity.User;
 import com.itlize.resourcemanagement.Service.UserService;
+import com.itlize.resourcemanagement.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -11,6 +13,12 @@ import java.util.List;
 
 @RestController
 public class UserController {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtUtil jwtTokenUtil;
 
     @Autowired
     private UserService service;

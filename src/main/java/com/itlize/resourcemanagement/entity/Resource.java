@@ -2,6 +2,7 @@ package com.itlize.resourcemanagement.entity;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,12 +11,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+@EntityListeners(AuditingEntityListener.class)
 public class Resource {
 
     public Resource() {
     }
 
-    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
+    public Resource( int resourceCode, String resourceName, boolean editable,
+                     int itemId, Date createTime, Date updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
         this.editable = editable;
@@ -40,12 +43,12 @@ public class Resource {
     private int itemId;
 
     @CreatedDate
-    @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp createTime;
+    @Column (name = "create_time",updatable = false, nullable = false)
+    private Date createTime;
 
     @LastModifiedDate
-    @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp updateTime;
+    @Column (name = "update_time",nullable = false)
+    private Date updateTime;
 
     @OneToMany(fetch=FetchType.LAZY,
             mappedBy="resource",
@@ -85,19 +88,19 @@ public class Resource {
         this.itemId = itemId;
     }
 
-    public Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 }
