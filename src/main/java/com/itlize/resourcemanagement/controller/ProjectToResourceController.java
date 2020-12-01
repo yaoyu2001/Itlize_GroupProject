@@ -7,10 +7,7 @@ import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ProjectToResource;
 import com.itlize.resourcemanagement.entity.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,11 +38,17 @@ public class ProjectToResourceController {
         if(project == null || resource == null) return null;
         return projectToResourceService.addResourceToProject(project, resource);
     }
-    @PostMapping("/project/resources/{projectResourceId}/{resourceId}")
+
+    //To update resource for a project
+    @PostMapping("/project/updateresource/{projectResourceId}/{resourceId}")
     public ProjectToResource updateResource(@PathVariable("projectResourceId")Integer projectResourceId,
                                             @PathVariable("resourceId")Integer resourceId){
         return projectToResourceService.updateResource(projectResourceId,resourceId);
     }
-
+    //Delete Resource for a project
+    @DeleteMapping
+    public void DeleteProjectResource(Integer id){
+        projectToResourceService.deleteProjectResource(id);
+    }
 
 }

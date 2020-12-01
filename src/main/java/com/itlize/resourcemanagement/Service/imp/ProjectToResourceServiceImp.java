@@ -48,4 +48,9 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
         projectToResource.setResource(resource);
         return repository.save(projectToResource);
     }
+
+    @Override
+    public void deleteProjectResource(Integer id) {
+        repository.deleteById(id);
+    }
 }

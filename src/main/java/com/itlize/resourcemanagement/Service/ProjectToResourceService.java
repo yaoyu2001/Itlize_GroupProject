@@ -13,6 +13,7 @@ public interface ProjectToResourceService {
 
     public ProjectToResource findById(Integer id);
     public ProjectToResource updateResource(Integer projectResourceId, Integer resourceId);
+    public void deleteProjectResource(Integer id);
 //
 //    public ProjectToResource setResourceForProject(Project project, Resource resource);
 //
