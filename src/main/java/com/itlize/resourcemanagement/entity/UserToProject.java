@@ -10,20 +10,22 @@ public class UserToProject {
     @GeneratedValue
     private int userprojectid;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "project_id")
-    private Projects projects;
+    private Project project;
 
-    public Projects getProjects() {
-        return projects;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjects(Projects projects) {
-        this.projects = projects;
+    public void setProject( Project project ) {
+        this.project = project;
     }
 
     public User getUser() {

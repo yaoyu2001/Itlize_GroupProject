@@ -9,7 +9,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    public User save(User user);
+    public void createTwo();
 
-    public void deleteById(Integer Id);
+    public User save(User user);
 }

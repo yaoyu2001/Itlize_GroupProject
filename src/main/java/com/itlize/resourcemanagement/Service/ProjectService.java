@@ -1,14 +1,14 @@
 package com.itlize.resourcemanagement.Service;
-import com.itlize.resourcemanagement.entity.Projects;
+import com.itlize.resourcemanagement.entity.Project;
+
 import java.util.List;
 
 public interface ProjectService {
-    public Projects findOneById(Integer id);
+    public Project findOneById( Integer id);
 
-    List<Projects> findAll();
+    List<Project> findAll();
 
-    public Projects save (Projects project);
+    public Project save ( Project project);
 
     public void deleteById(Integer Id);
-
     }
