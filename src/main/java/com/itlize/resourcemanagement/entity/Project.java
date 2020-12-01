@@ -1,11 +1,12 @@
 package com.itlize.resourcemanagement.entity;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -18,11 +19,13 @@ public class Project {
     @Column(name = "project_name")
     private String project_name;
 
-    @Column(name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp create_time;
+    @CreatedDate
+    @Column (name = "create_time",updatable = false, nullable = false)
+    private Date create_time;
 
-    @Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp update_time;
+    @LastModifiedDate
+    @Column (name = "update_time",nullable = false)
+    private Date update_time;
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
     private Set<UserToProject> UserToProjectSet;
@@ -33,7 +36,7 @@ public class Project {
     public Project() {
     }
 
-    public Project( String project_name, Timestamp create_time, Timestamp update_time) {
+    public Project( String project_name, Date create_time, Date update_time) {
         this.project_name = project_name;
         this.create_time = create_time;
         this.update_time = update_time;
@@ -47,19 +50,19 @@ public class Project {
         this.project_name = project_name;
     }
 
-    public Timestamp getCreate_time() {
+    public Date getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Timestamp create_time) {
+    public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
 
-    public Timestamp getUpdate_time() {
+    public Date getUpdate_time() {
         return update_time;
     }
 
-    public void setUpdate_time(Timestamp update_time) {
+    public void setUpdate_time(Date update_time) {
         this.update_time = update_time;
     }
 
