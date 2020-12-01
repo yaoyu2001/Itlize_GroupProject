@@ -37,7 +37,6 @@ public class User {
 
     @LastModifiedDate
     @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-//    @Column (name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Timestamp update_time;
 
     @Column (name = "main_image")
@@ -59,11 +58,10 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, Timestamp create_time, Timestamp update_time, String email, String first_name, String last_name) {
+    public User(String userName,Role role, String password, String email, String first_name, String last_name) {
         this.userName = userName;
         this.password = password;
-        this.create_time = create_time;
-        this.update_time = update_time;
+        this.role = role;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -99,7 +97,8 @@ public class User {
     public void setUpdate_time(Timestamp update_time) {
         this.update_time = update_time;
     }
-        public String getMainImage() {
+
+    public String getMainImage() {
         return mainImage;
     }
     public void setMainImage(String mainImage) {

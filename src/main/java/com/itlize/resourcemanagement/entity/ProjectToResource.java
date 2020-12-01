@@ -19,6 +19,7 @@ public class ProjectToResource {
     @JoinColumn(name = "project_id")
     private Project project;
 
+
     public int getProjectResourceId() {
         return projectResourceId;
     }

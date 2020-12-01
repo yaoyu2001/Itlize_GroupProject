@@ -6,7 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
@@ -23,7 +23,6 @@ public class Resource {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
-
 
     @Id
 //    @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -45,12 +44,11 @@ public class Resource {
 
     @LastModifiedDate
     @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Timestamp updateTime;
 
-    @OneToMany(fetch=FetchType.LAZY,
-            mappedBy="resource",
-            cascade = CascadeType.ALL)
-    private List<ResourceColumn> ResourceColumn;
+    @OneToMany(mappedBy = "resource")
+    private Set<ProjectToResource> projectToResource;
 
 
     public int getResourceCode() {

@@ -19,6 +19,7 @@ public class ProjectController {
     }
 
     @GetMapping("/projects/{id}")
+
     public Project getProject(@PathVariable("id") Integer id){
         return service.findOneById(id);
     }
@@ -30,3 +31,4 @@ public class ProjectController {
         return service.save(project);
     }
 }
+
