@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.sql.Date;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -18,12 +19,11 @@ public class Projects {
     @Column(name = "project_name")
     private String project_name;
 
-    @CreatedDate
-    @Column(name = "create_time")
-    private Date create_time;
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp create_time;
 
-    @Column(name = "update_time")
-    private Date update_time;
+    @Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private Timestamp update_time;
 
     @OneToMany(mappedBy = "projects")
     private Set<UserToProject> UserToProjectSet;
@@ -34,7 +34,7 @@ public class Projects {
     public Projects() {
     }
 
-    public Projects(String project_name, Date create_time, Date update_time) {
+    public Projects(String project_name, Timestamp create_time, Timestamp update_time) {
         this.project_name = project_name;
         this.create_time = create_time;
         this.update_time = update_time;
@@ -48,19 +48,19 @@ public class Projects {
         this.project_name = project_name;
     }
 
-    public Date getCreate_time() {
+    public Timestamp getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Date create_time) {
+    public void setCreate_time(Timestamp create_time) {
         this.create_time = create_time;
     }
 
-    public Date getUpdate_time() {
+    public Timestamp getUpdate_time() {
         return update_time;
     }
 
-    public void setUpdate_time(Date update_time) {
+    public void setUpdate_time(Timestamp update_time) {
         this.update_time = update_time;
     }
 

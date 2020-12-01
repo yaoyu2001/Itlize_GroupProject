@@ -2,7 +2,7 @@ package com.itlize.resourcemanagement.controller;
 
 import com.itlize.resourcemanagement.entity.Role;
 import com.itlize.resourcemanagement.entity.User;
-import com.itlize.resourcemanagement.services.UserService;
+import com.itlize.resourcemanagement.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +26,7 @@ public class UserController {
                        @RequestParam("Role") Role role,
                        @RequestParam("Email") String email,
                        @RequestParam("First Name") String Fname,
-                       @RequestParam("Last Name") String Lname,
-                       @RequestParam("Create_time") Date Ctime,
-                       @RequestParam("Update_time") Date UTime) {
+                       @RequestParam("Last Name") String Lname) {
         User user = new User();
         user.setUserName(username);
         user.setPassword(password);
@@ -36,8 +34,6 @@ public class UserController {
         user.setEmail(email);
         user.setFirst_name(Fname);
         user.setLast_name(Lname);
-        user.setCreate_time(Ctime);
-        user.setUpdate_time(UTime);
         return service.save(user);
     }
     @GetMapping("/Users/{id}")
