@@ -4,7 +4,7 @@ import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.itlize.resourcemanagement.DAO.ProjectRepo;
+import com.itlize.resourcemanagement.DAO.ProjectDAO;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class ProjectServiceImp implements ProjectService {
 
    @Autowired
-   private ProjectRepo repository;
+   private ProjectDAO repository;
 
     @Override
     public Projects findOneById(Integer Id) {

@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.services;
+package com.itlize.resourcemanagement.Service;
 
 import com.itlize.resourcemanagement.entity.User;
 
@@ -9,7 +9,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    public void createTwo();
-
     public User save(User user);
+
+    public void deleteById(Integer Id);
 }
