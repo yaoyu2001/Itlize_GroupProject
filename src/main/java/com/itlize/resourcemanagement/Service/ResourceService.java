@@ -12,4 +12,6 @@ public interface ResourceService {
 
     public Resource save( Resource luckymoney);
 
+    public void deleteById(Integer Id);
+
 }
