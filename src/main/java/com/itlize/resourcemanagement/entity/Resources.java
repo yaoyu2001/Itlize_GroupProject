@@ -6,16 +6,16 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
-public class Resource {
+@Table(name = "Resources", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+public class Resources {
 
-    public Resource() {
+    public Resources() {
     }
 
-    public Resource( int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
+    public Resources(int resourceCode, String resourceName, boolean editable, int itemId, Timestamp createTime, Timestamp updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
         this.editable = editable;
@@ -24,34 +24,32 @@ public class Resource {
         this.updateTime = updateTime;
     }
 
-
     @Id
-//    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
 
     @Column(name = "resource_name")
     private String resourceName;
 
     @Column(name = "editable")
-    private boolean editable = false;
+    private boolean editable;
 
 
     @Column(name = "item_id")
     private int itemId;
 
+//    @Column (name = "create_time",columnDefinition = "DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP", updatable = false, nullable = false)
     @CreatedDate
     @Column (name = "create_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp createTime;
 
     @LastModifiedDate
     @Column (name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+//    @Column(name = "update_time",columnDefinition = "Current_timestamp", nullable = false)
     private Timestamp updateTime;
 
-    @OneToMany(fetch=FetchType.LAZY,
-            mappedBy="resource",
-            cascade = CascadeType.ALL)
-    private List<ResourceColumn> ResourceColumn;
-
+    @OneToMany(mappedBy = "resource")
+    private Set<ProjectToResource> projectToResource;
 
     public int getResourceCode() {
         return resourceCode;

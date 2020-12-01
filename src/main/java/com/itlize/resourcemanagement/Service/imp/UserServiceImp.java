@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.Service.impl;
+package com.itlize.resourcemanagement.Service.imp;
 
 import com.itlize.resourcemanagement.DAO.UserDAO;
 import com.itlize.resourcemanagement.entity.User;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
+
     @Autowired
     private UserDAO userDAO;
 
@@ -29,9 +30,11 @@ public class UserServiceImp implements UserService {
         return userDAO.save(user);
     }
 
+
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }
 
     public User findUserByUserName(String name){return userDAO.findUserByUserName(name);}
+
 }

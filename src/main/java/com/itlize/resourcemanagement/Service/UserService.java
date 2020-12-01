@@ -9,10 +9,8 @@ public interface UserService {
 
     List<User> findAll();
 
-    public User save(User user);
-
-    public void deleteById(Integer Id);
-
     public User findUserByUserName(String name);
+
+    public User save(User user);
 
 }

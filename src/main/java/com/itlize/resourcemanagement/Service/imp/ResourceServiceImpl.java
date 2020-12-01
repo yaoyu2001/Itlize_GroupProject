@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.Service.impl;
+package com.itlize.resourcemanagement.Service.imp;
 
 import com.itlize.resourcemanagement.DAO.ResourceRepository;
 import com.itlize.resourcemanagement.entity.Resource;

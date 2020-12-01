@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.Service.impl;
+package com.itlize.resourcemanagement.Service.imp;
 
 import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Project;
@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class ProjectServiceImp implements ProjectService {
 
-   @Autowired
-   private ProjectDAO repository;
+    @Autowired
+    private ProjectDAO repository;
 
     @Override
     public Project findOneById(Integer Id) {
