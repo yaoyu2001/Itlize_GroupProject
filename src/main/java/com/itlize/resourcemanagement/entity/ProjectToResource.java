@@ -35,11 +35,11 @@ public class ProjectToResource {
         this.resource = resource;
     }
 
-//    public Projects getProject() {
-//        return project;
-//    }
-//
-//    public void setProject(Projects project) {
-//        this.project = project;
-//    }
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }
