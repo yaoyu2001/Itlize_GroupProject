@@ -1,11 +1,10 @@
 package com.itlize.resourcemanagement.controller;
 
-import com.itlize.resourcemanagement.service.ProjectService;
+import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -20,14 +19,14 @@ public class ProjectController {
     }
 
     @GetMapping("/projects/{id}")
-    public Project getProject( @PathVariable("id") Integer id){
+    public Project getProject(@PathVariable("id") Integer id){
         return service.findOneById(id);
     }
 
     @PostMapping("/projects")
-    public Project create( @RequestParam("name") String name, @RequestParam("create_time") Date createTime,
-                           @RequestParam("update_time") Date updateTime){
-        Project project = new Project(name,createTime,updateTime);
+    public Project create(@RequestParam("name") String name){
+        Project project = new Project();
+        project.setProject_name(name);
         return service.save(project);
     }
 }

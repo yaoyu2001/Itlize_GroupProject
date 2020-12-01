@@ -2,7 +2,7 @@ package com.itlize.resourcemanagement.services.Impl;
 
 import com.itlize.resourcemanagement.DAO.UserDAO;
 import com.itlize.resourcemanagement.entity.User;
-import com.itlize.resourcemanagement.service.UserService;
+import com.itlize.resourcemanagement.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

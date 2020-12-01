@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement.service;
+package com.itlize.resourcemanagement.Service;
 import com.itlize.resourcemanagement.entity.Project;
 
 import java.util.List;

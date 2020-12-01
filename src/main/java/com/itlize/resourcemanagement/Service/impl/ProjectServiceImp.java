@@ -1,6 +1,6 @@
-package com.itlize.resourcemanagement.service.impl;
+package com.itlize.resourcemanagement.Service.impl;
 
-import com.itlize.resourcemanagement.service.ProjectService;
+import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

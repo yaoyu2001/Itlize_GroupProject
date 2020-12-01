@@ -1,7 +1,7 @@
 package com.itlize.resourcemanagement.controller;
 
 import com.itlize.resourcemanagement.entity.Resource;
-import com.itlize.resourcemanagement.service.ResourceService;
+import com.itlize.resourcemanagement.Service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
