@@ -29,4 +29,18 @@ public class ProjectController {
         project.setProject_name(name);
         return service.save(project);
     }
+    @PutMapping("/projects/{id}")
+    public Project updateProject(@PathVariable("id") Integer id, @RequestParam("name") String name){
+        Project project = service.findOneById(id);
+        project.setProject_name(name);
+        return service.save(project);
+    }
+
+    @DeleteMapping("/projects/{id}")
+    public void deleteProject(@PathVariable("id") Integer id){
+        Project project = service.findOneById(id);
+        service.deleteById(id);
+    }
+
+
 }
