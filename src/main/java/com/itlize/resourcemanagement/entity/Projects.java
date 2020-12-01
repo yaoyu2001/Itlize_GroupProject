@@ -28,8 +28,10 @@ public class Projects {
     @OneToMany(mappedBy = "projects")
     private Set<UserToProject> UserToProjectSet;
 
+
     @OneToMany(mappedBy = "project")
     private Set<ProjectToResource >projectToResource;
+
 
     public Projects() {
     }
