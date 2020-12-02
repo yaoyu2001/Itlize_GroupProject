@@ -43,12 +43,14 @@ public class Resource {
     private int itemId;
 
     @CreatedDate
+
     @Column (name = "create_time",updatable = false, nullable = false)
     private Date createTime;
 
     @LastModifiedDate
     @Column (name = "update_time",nullable = false)
     private Date updateTime;
+
 
     @OneToMany(fetch=FetchType.LAZY,
             mappedBy="resource",

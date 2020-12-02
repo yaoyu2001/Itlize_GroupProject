@@ -5,8 +5,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 
-import java.sql.Timestamp;
-import java.util.Date;
+
+import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,11 +28,13 @@ public class Project {
     @Column (name = "update_time",nullable = false)
     private Date update_time;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
-    private Set<UserToProject> UserToProjectSet;
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
-    private Set<ProjectToResource> projectToResource;
+    @OneToMany(mappedBy = "project")
+    private Set<ProjectColumn> UserToProjectSet = new HashSet<>();
 
     public Project() {
     }
@@ -66,21 +69,21 @@ public class Project {
         this.update_time = update_time;
     }
 
-    public Set<UserToProject> getUserToProjectSet() {
-        return UserToProjectSet;
-    }
-
-    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-        UserToProjectSet = userToProjectSet;
-    }
-
-    public Set<ProjectToResource> getProjectToResource() {
-        return projectToResource;
-    }
-
-    public void setProjectToResource(Set<ProjectToResource> projectToResource) {
-        this.projectToResource = projectToResource;
-    }
+//    public Set<UserToProject> getUserToProjectSet() {
+//        return UserToProjectSet;
+//    }
+//
+//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
+//        UserToProjectSet = userToProjectSet;
+//    }
+//
+//    public Set<ProjectToResource> getProjectToResource() {
+//        return projectToResource;
+//    }
+//
+//    public void setProjectToResource(Set<ProjectToResource> projectToResource) {
+//        this.projectToResource = projectToResource;
+//    }
 
     @Override
     public String toString() {

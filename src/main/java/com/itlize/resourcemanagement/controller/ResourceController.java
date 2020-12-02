@@ -1,5 +1,6 @@
 package com.itlize.resourcemanagement.controller;
 
+import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.Resource;
 import com.itlize.resourcemanagement.Service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,15 @@ public class ResourceController {
         Resource resource = service.findOneById(id);
         resource.setResourceName(name);
         return service.save(resource);
+    }
+
+    /**
+     * delete a resources information
+     */
+    @DeleteMapping("/resources/{id}")
+    public void deleteResource(@PathVariable("id") Integer id){
+        Resource resource = service.findOneById(id);
+        service.deleteById(id);
     }
 
 }
