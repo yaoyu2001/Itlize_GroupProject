@@ -2,8 +2,8 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: LINFENG ZHOU
-    password: Xs!241926126
+    username: root
+    password: OOoo--33
     url: jdbc:mysql://localhost:3306/resources_manager_project
 
   jpa:
@@ -15,3 +15,6 @@ spring:
       hibernate:
         format_sql: false
         globally_quoted_identifiers: false
+
+  server:
+    port: 8081
