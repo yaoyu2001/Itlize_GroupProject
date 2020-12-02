@@ -25,13 +25,15 @@ public class UserServiceImp implements UserService {
         return userDAO.findAll();
     }
 
-    @Transactional
-    public void createTwo() {
-
-    }
-
     @Override
     public User save(User user) {
         return userDAO.save(user);
     }
+
+    public void deleteById(Integer Id){
+        userDAO.deleteById(Id);
+    }
+
+    public User findUserByUserName(String name){return userDAO.findUserByUserName(name);}
+
 }

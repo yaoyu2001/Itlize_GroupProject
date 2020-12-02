@@ -9,7 +9,8 @@ public interface UserService {
 
     List<User> findAll();
 
-    public void createTwo();
+    public User findUserByUserName(String name);
 
     public User save(User user);
+
 }

@@ -17,7 +17,6 @@ public class ResourceColumn {
 
   @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
-
   @JoinColumn(name="resource_id")
   private Resource resource;
 
