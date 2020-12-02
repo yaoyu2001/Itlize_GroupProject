@@ -3,6 +3,7 @@ package com.itlize.resourcemanagement.Service;
 import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ProjectToResource;
 import com.itlize.resourcemanagement.entity.Resource;
+import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public interface ProjectToResourceService {
     public ProjectToResource findById(Integer id);
     public ProjectToResource updateResource(Integer projectResourceId, Integer resourceId);
     public void deleteProjectResource(Integer id);
+    public List<ProjectToResource> findAllByProjectId(Integer projectId);
 //
 //    public ProjectToResource setResourceForProject(Project project, Resource resource);
 //

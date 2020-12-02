@@ -5,6 +5,7 @@ package com.itlize.resourcemanagement.entity;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,6 +15,7 @@ import java.util.Set;
 
 @Entity
 @Table (name = "user", uniqueConstraints = {@UniqueConstraint (columnNames = "user_name")})
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
     @Id

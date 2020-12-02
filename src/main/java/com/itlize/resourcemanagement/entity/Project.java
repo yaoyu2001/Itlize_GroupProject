@@ -2,6 +2,7 @@ package com.itlize.resourcemanagement.entity;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "project")
+@EntityListeners(AuditingEntityListener.class)
 public class Project {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
