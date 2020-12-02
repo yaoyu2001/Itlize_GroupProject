@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface ProjectToResourceDAO extends JpaRepository<ProjectToResource,Integer> {
-    @EntityGraph(value = "ProjectToResource.Project", type = EntityGraph.EntityGraphType.FETCH)
-    List<ProjectToResource> findAllByProjectId(Integer id);
+
 }

@@ -54,8 +54,4 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
         repository.deleteById(id);
     }
 
-    @Override
-    public List<ProjectToResource> findAllByProjectId(Integer projectId) {
-        return repository.findAllByProjectId(projectId);
-    }
 }

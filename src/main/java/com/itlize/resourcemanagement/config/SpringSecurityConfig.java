@@ -1,4 +1,4 @@
-package com.itlize.resourcemanagement;
+package com.itlize.resourcemanagement.config;
 
 import com.itlize.resourcemanagement.Service.imp.MyUserDetailsService;
 import com.itlize.resourcemanagement.filter.JwtRequestFilter;
@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -45,11 +46,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable();
-        //        .authorizeRequests().antMatchers("/authenticate").permitAll().
-        //        anyRequest().authenticated().and().
-        //        exceptionHandling().and().sessionManagement()
-        //        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        httpSecurity.csrf().disable()
+                .authorizeRequests().antMatchers("/User/login").permitAll()
+                .antMatchers("/User/register").permitAll().
+                anyRequest().authenticated().and().
+                exceptionHandling().and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
