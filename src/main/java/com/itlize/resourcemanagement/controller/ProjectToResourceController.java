@@ -46,7 +46,7 @@ public class ProjectToResourceController {
         return projectToResourceService.updateResource(projectResourceId,resourceId);
     }
     //Delete Resource for a project
-    @DeleteMapping
+    @DeleteMapping("/project/deleteresource")
     public void DeleteProjectResource(Integer id){
         projectToResourceService.deleteProjectResource(id);
     }
