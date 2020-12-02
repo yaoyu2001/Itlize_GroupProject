@@ -62,5 +62,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
     public List<ProjectToResource> findAllByProjectId(Integer projectId) {
         return repository.findByProjectId(projectId);
     }
+
 }
 

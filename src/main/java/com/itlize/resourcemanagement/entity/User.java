@@ -23,7 +23,7 @@ public class User {
     private int userId;
 
     @Column (name = "user_name")
-    private String userName;
+    private String username;
 
     @Column (name = "password")
     private String password;
@@ -60,7 +60,7 @@ public class User {
     }
 
     public User(String userName, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.create_time = create_time;
         this.update_time = update_time;
@@ -70,14 +70,12 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() { return password; }
     public void setPassword(String password) {
         this.password = password;
     }

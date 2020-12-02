@@ -30,11 +30,6 @@ public class ProjectToResourceController {
         return projectToResourceService.findById(id);
     }
 
-    @GetMapping("/project/findresourcesbyproject/{id}")
-    public List<ProjectToResource> findByproId(@PathVariable("id") Integer id){
-        return projectToResourceService.findAllByProjectId(id);
-    }
-
     @PostMapping("/project/resources/{projectId}/{resourceId}")
     public ProjectToResource addResource(@PathVariable("projectId") Integer projectId,
                                          @PathVariable("resourceId")Integer resourceId){

@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -21,16 +20,16 @@ public class MyUserDetailsService implements UserDetailsService {
     UserDAO userDAO;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<User> user = userDAO.findById(Integer.parseInt(s));
+    public UserDetails loadUserByUsername(String Username) throws UsernameNotFoundException {
+        User user = userDAO.findUserByUserName(Username);
 
         if (user == null){
-            throw new UsernameNotFoundException("User not find by the username" + s);
+            throw new UsernameNotFoundException("User not find by the username" + Username);
         }
         else{
             return new org.springframework.security.
-                    core.userdetails.User(user.get().getUserName(),
-                    passwordEncoder.encode(user.get().getPassword()),
+                    core.userdetails.User(user.getUserName(),
+                    passwordEncoder.encode(user.getPassword()),
                     new ArrayList<>());
         }
     }

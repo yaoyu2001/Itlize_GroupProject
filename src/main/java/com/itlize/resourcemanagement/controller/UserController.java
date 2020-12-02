@@ -6,6 +6,7 @@ import com.itlize.resourcemanagement.entity.Role;
 import com.itlize.resourcemanagement.entity.User;
 import com.itlize.resourcemanagement.Service.UserService;
 import com.itlize.resourcemanagement.util.JwtUtil;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("User")
 public class UserController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class UserController {
         return service.findAll();
     }
 
-    @PostMapping("/Newuser")
+    @PostMapping("/register")
     public User create(@RequestParam("username") String username,
                        @RequestParam("Password") String password,
                        @RequestParam("Role") Role role,
@@ -73,16 +75,14 @@ public class UserController {
     }
 
 
-    @GetMapping("/User/{id}")
-    public User findById(@PathVariable("id") Integer id) {
-        return service.findOneById(id);
-    }
+    @GetMapping("/{id}")
+    public User findById(@PathVariable("id") Integer id) {return service.findOneById(id);}
 
-    @PostMapping(value = "/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
+    @PostMapping("/login")
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody User TestUser) throws Exception {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword())
+                    new UsernamePasswordAuthenticationToken(TestUser.getUserName(), TestUser.getPassword())
             );
         }
         catch (BadCredentialsException e) {
@@ -91,11 +91,19 @@ public class UserController {
 
 
         final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(user.getUserName());
+                .loadUserByUsername(TestUser.getUserName());
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+//        User user = service.getUserByCredentials(TestUser.getUserName(), TestUser.getPassword());
+//        System.out.println(TestUser.getPassword());
+//        if (user == null) {
+//            return ResponseEntity.ok(new AuthenticationResponse(TestUser.getUserName()));
+//        } else {
+//            final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
+//            final String token = jwtTokenUtil.generateToken(userDetails);
+//            return ResponseEntity.ok(new AuthenticationResponse(token));
+//        }
     }
-
 }

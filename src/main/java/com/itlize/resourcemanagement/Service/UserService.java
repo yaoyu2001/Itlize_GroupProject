@@ -12,5 +12,6 @@ public interface UserService {
     public User findUserByUserName(String name);
 
     public User save(User user);
+    public User getUserByCredentials(String username, String Password);
 
 }

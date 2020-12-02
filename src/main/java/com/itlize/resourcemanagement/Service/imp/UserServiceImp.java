@@ -30,6 +30,11 @@ public class UserServiceImp implements UserService {
         return userDAO.save(user);
     }
 
+    @Override
+    public User getUserByCredentials(String username, String Password) {
+        return userDAO.findUserByUserName(username);
+    }
+
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }
