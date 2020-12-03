@@ -45,15 +45,18 @@ public class UserController {
                        @RequestParam("Email") String email,
                        @RequestParam("First Name") String Fname,
                        @RequestParam("Last Name") String Lname) {
-        User user = new User();
-        user.setUserName(username);
-        user.setPassword(password);
-        user.setRole(role);
-        user.setEmail(email);
-        user.setFirst_name(Fname);
-        user.setLast_name(Lname);
-
-        return service.save(user);
+        User testuser = service.findUserByUsername(username);
+        if (testuser == null){
+            User user = new User();
+            user.setUserName(username);
+            user.setPassword(password);
+            user.setRole(role);
+            user.setEmail(email);
+            user.setFirst_name(Fname);
+            user.setLast_name(Lname);
+            return service.save(user);}
+        else {
+            return testuser;}
     }
 
     @PostMapping("/UpdateUser")
