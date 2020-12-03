@@ -19,7 +19,8 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     public Resource findOneById( Integer Id) {
-        return resourceDao.findById(Id).orElse(null);
+//        return resourceDao.findByResourceCode(Id).orElse(null);
+        return resourceDao.findByResourceCode(Id);
     }
 
     @Override
