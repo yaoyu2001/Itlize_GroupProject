@@ -4,8 +4,6 @@ import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.Service.ProjectToResourceService;
 import com.itlize.resourcemanagement.DAO.ProjectToResourceDAO;
 import com.itlize.resourcemanagement.Service.ResourceService;
-import com.itlize.resourcemanagement.controller.ProjectController;
-import com.itlize.resourcemanagement.controller.ResourceController;
 import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ProjectToResource;
 import com.itlize.resourcemanagement.entity.Resource;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProjectToResourceServiceImp implements ProjectToResourceService {
@@ -24,7 +21,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
     ResourceService resourceService;
     @Autowired
     ProjectService projectService;
-
 
     @Override
     public ProjectToResource addResourceToProject(Project project, Resource resource) {
@@ -58,10 +54,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
         repository.deleteById(id);
     }
 
-    @Override
-    public List<ProjectToResource> findAllByProjectId(Integer projectId) {
-        return repository.findByProjectId(projectId);
-    }
 
 }
 
