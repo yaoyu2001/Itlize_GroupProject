@@ -19,4 +19,5 @@ public interface ProjectDAO extends JpaRepository<Project, Integer>{
             "VALUES (?,?,?,?,?)", nativeQuery = true)
     public void addColumnForProject(String columnName, String columnValue, ResourceColumn.ColumnType columnType,
                                     Resource resource_id, Project project_id);
+
 }

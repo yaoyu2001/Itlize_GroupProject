@@ -62,8 +62,8 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
-        this.username = userName;
+    public User(String username, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
+        this.username = username;
         this.password = password;
         this.create_time = create_time;
         this.update_time = update_time;
@@ -75,8 +75,8 @@ public class User {
     public String getUserName() {
         return username;
     }
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
     public String getPassword() { return password; }
     public void setPassword(String password) {
