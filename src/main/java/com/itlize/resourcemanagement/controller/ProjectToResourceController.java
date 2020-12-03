@@ -45,6 +45,7 @@ public class ProjectToResourceController {
                                             @PathVariable("resourceId")Integer resourceId){
         return projectToResourceService.updateResource(projectResourceId,resourceId);
     }
+
     //Delete Resource for a project
     @DeleteMapping("/project/deleteresource/{id}")
     public void DeleteProjectResource(@PathVariable("id") Integer id){

@@ -2,6 +2,7 @@ package com.itlize.resourcemanagement.controller;
 
 import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Project;
+import com.itlize.resourcemanagement.entity.ResourceColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,9 +44,15 @@ public class ProjectController {
         service.deleteById(id);
     }
 
-    @GetMapping("/projects/findProjectByUserId")
+    @GetMapping("/findProjectByUserId")
     public List<Project> list(@RequestParam("user_id") Integer id) {
-        return service.findOneByUserId(id);
+        return service.findALLByUserId(id);
+    }
+
+    @PostMapping("/projects/addColumn")
+    public void addColumn(@RequestBody ResourceColumn resourceColumn){
+        service.addColumnForProject(resourceColumn.getColumnName(),resourceColumn.getColumnValue(),
+                resourceColumn.getColumnType(),resourceColumn.getResource(),resourceColumn.getProject());
     }
 
 

@@ -54,6 +54,5 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
         repository.deleteById(id);
     }
 
-
 }
 

@@ -2,7 +2,7 @@ package com.itlize.resourcemanagement.controller;
 
 import com.itlize.resourcemanagement.Service.imp.MyUserDetailsService;
 import com.itlize.resourcemanagement.entity.AuthenticationResponse;
-import com.itlize.resourcemanagement.entity.Role;
+
 import com.itlize.resourcemanagement.entity.User;
 import com.itlize.resourcemanagement.Service.UserService;
 import com.itlize.resourcemanagement.util.JwtUtil;
@@ -41,29 +41,32 @@ public class UserController {
     @PostMapping("/register")
     public User create(@RequestParam("username") String username,
                        @RequestParam("Password") String password,
-                       @RequestParam("Role") Role role,
+                       @RequestParam("role") User.Role role,
                        @RequestParam("Email") String email,
                        @RequestParam("First Name") String Fname,
                        @RequestParam("Last Name") String Lname) {
-        User user = new User();
-        user.setUserName(username);
-        user.setPassword(password);
-        user.setRole(role);
-        user.setEmail(email);
-        user.setFirst_name(Fname);
-        user.setLast_name(Lname);
-
-        return service.save(user);
+        User testuser = service.findUserByUsername(username);
+        if (testuser == null){
+            User user = new User();
+            user.setUserName(username);
+            user.setPassword(password);
+            user.setRole(role);
+            user.setEmail(email);
+            user.setFirst_name(Fname);
+            user.setLast_name(Lname);
+            return service.save(user);}
+        else {
+            return testuser;}
     }
 
     @PostMapping("/UpdateUser")
     public User update(@RequestParam("username") String username,
                        @RequestParam("Password") String password,
-                       @RequestParam("Role") Role role,
+                       @RequestParam("role") User.Role role,
                        @RequestParam("Email") String email,
                        @RequestParam("First Name") String Fname,
                        @RequestParam("Last Name") String Lname){
-        User user = service.findUserByUserName(username);
+        User user = service.findUserByUsername(username);
         user.setUserName(username);
         user.setPassword(password);
         user.setRole(role);
@@ -89,21 +92,11 @@ public class UserController {
             throw new Exception("Incorrect username or password", e);
         }
 
-
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(TestUser.getUserName());
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
-//        User user = service.getUserByCredentials(TestUser.getUserName(), TestUser.getPassword());
-//        System.out.println(TestUser.getPassword());
-//        if (user == null) {
-//            return ResponseEntity.ok(new AuthenticationResponse(TestUser.getUserName()));
-//        } else {
-//            final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
-//            final String token = jwtTokenUtil.generateToken(userDetails);
-//            return ResponseEntity.ok(new AuthenticationResponse(token));
-//        }
     }
 }

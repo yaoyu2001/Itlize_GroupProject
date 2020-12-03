@@ -34,11 +34,13 @@ public class UserServiceImp implements UserService {
     public User getUserByCredentials(String username, String Password) {
         return userDAO.findUserByUsername(username);
     }
-
+  
+    @Override
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }
+    @Override
+    public User findUserByUsername(String name){return userDAO.findUserByUsername(name);}
 
-    public User findUserByUserName(String name){return userDAO.findUserByUsername(name);}
 
 }

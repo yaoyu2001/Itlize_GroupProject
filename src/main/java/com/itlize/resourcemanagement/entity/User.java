@@ -17,6 +17,9 @@ import java.util.Set;
 @Table (name = "user", uniqueConstraints = {@UniqueConstraint (columnNames = "user_name")})
 @EntityListeners(AuditingEntityListener.class)
 public class User {
+    public enum Role {
+        ADMIN, USER;
+    }
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -97,7 +100,7 @@ public class User {
     public void setUpdate_time(Date update_time) {
         this.update_time = update_time;
     }
-        public String getMainImage() {
+    public String getMainImage() {
         return mainImage;
     }
     public void setMainImage(String mainImage) {
@@ -120,6 +123,14 @@ public class User {
     }
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public Set<Project> getUserToProjectSet() {
+        return UserToProjectSet;
+    }
+
+    public void setUserToProjectSet(Set<Project> userToProjectSet) {
+        UserToProjectSet = userToProjectSet;
     }
 
 }

@@ -1,35 +1,27 @@
 package com.itlize.resourcemanagement.controller;
 
-import com.itlize.resourcemanagement.entity.Project;
+
 import com.itlize.resourcemanagement.entity.Resource;
 import com.itlize.resourcemanagement.Service.ResourceService;
+import com.itlize.resourcemanagement.entity.ResourceColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by yang shu
- * 2018-03-11 21:35
- */
+
 @RestController
 public class ResourceController {
 
     @Autowired
     private ResourceService service;
 
-    /**
-     * get all resources from database
-     */
+
     @GetMapping("/resources")
     public List<Resource> list() {
         return service.findAll();
     }
 
-    /**
-     * creat a resources
-     */
     @PostMapping("/resources")
     public Resource create(@RequestParam("name") String name,
                              @RequestParam("resource_code") Integer code) {
@@ -39,17 +31,12 @@ public class ResourceController {
         return service.save(resource);
     }
 
-    /**
-     * find a resources by its id
-     */
     @GetMapping("/resources/{id}")
     public Resource findById( @PathVariable("id") Integer id) {
         return service.findOneById(id);
     }
 
-    /**
-     * updated a resources information
-     */
+
     @PutMapping("/resources/{id}")
     public Resource update( @PathVariable("id") Integer id,
                             @RequestParam("name") String name) {
@@ -58,13 +45,16 @@ public class ResourceController {
         return service.save(resource);
     }
 
-    /**
-     * delete a resources information
-     */
+
     @DeleteMapping("/resources/{id}")
     public void deleteResource(@PathVariable("id") Integer id){
         Resource resource = service.findOneById(id);
         service.deleteById(id);
     }
 
+    @PostMapping("/resources/addColumn")
+    public void addColumn(@RequestBody ResourceColumn resourceColumn){
+        service.addColumnForResource(resourceColumn.getColumnName(),resourceColumn.getColumnValue(),
+                resourceColumn.getColumnType(),resourceColumn.getResource());
+    }
 }
