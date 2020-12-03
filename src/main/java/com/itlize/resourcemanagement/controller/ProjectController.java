@@ -42,5 +42,8 @@ public class ProjectController {
         service.deleteById(id);
     }
 
-
+    @GetMapping("/findProjectByUserId")
+    public List<Project> list(@RequestParam("user_id") Integer id) {
+        return service.findOneByUserId(id);
+    }
 }

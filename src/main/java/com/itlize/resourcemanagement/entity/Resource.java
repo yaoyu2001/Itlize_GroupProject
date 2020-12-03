@@ -57,6 +57,11 @@ public class Resource {
             cascade = CascadeType.ALL)
     private List<ResourceColumn> ResourceColumn;
 
+    @OneToMany(fetch=FetchType.LAZY,
+            mappedBy="resource",
+            cascade = CascadeType.ALL)
+    private List<ProjectToResource> ProjectToResource;
+
 
     public int getResourceCode() {
         return resourceCode;
@@ -104,5 +109,21 @@ public class Resource {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public List<ResourceColumn> getResourceColumn() {
+        return ResourceColumn;
+    }
+
+    public void setResourceColumn(List<ResourceColumn> resourceColumn) {
+        this.ResourceColumn = resourceColumn;
+    }
+
+    public List<ProjectToResource> getProjectToResource() {
+        return ProjectToResource;
+    }
+
+    public void setProjectToResource(List<ProjectToResource> projectToResource) {
+        ProjectToResource = projectToResource;
     }
 }

@@ -25,7 +25,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
     @Autowired
     ProjectService projectService;
 
-
     @Override
     public ProjectToResource addResourceToProject(Project project, Resource resource) {
         ProjectToResource projectToResource = new ProjectToResource();
@@ -56,11 +55,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
     @Override
     public void deleteProjectResource(Integer id) {
         repository.deleteById(id);
-    }
-
-    @Override
-    public List<ProjectToResource> findAllByProjectId(Integer projectId) {
-        return repository.findByProjectId(projectId);
     }
 
 }

@@ -20,8 +20,6 @@ public class ResourceColumn {
   @JoinColumn(name="resource_id")
   private Resource resource;
 
-
-
   public long getColumnId() {
     return columnId;
   }
@@ -38,7 +36,6 @@ public class ResourceColumn {
   public void setColumnName(String columnName) {
     this.columnName = columnName;
   }
-
 
   public String getColumnValue() {
     return columnValue;

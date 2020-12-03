@@ -35,8 +35,15 @@ public class Project {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "project")
-    private Set<ProjectColumn> UserToProjectSet = new HashSet<>();
+    @OneToMany(fetch=FetchType.LAZY,
+            mappedBy="project",
+            cascade = CascadeType.ALL)
+    private Set<ProjectColumn> projectColumns = new HashSet<>();
+
+    @OneToMany(fetch=FetchType.LAZY,
+            mappedBy="project",
+            cascade = CascadeType.ALL)
+    private Set<ProjectToResource> projectToResources = new HashSet<>();
 
     public Project() {
     }
@@ -71,21 +78,17 @@ public class Project {
         this.update_time = update_time;
     }
 
-//    public Set<UserToProject> getUserToProjectSet() {
-//        return UserToProjectSet;
-//    }
-//
-//    public void setUserToProjectSet(Set<UserToProject> userToProjectSet) {
-//        UserToProjectSet = userToProjectSet;
-//    }
-//
-//    public Set<ProjectToResource> getProjectToResource() {
-//        return projectToResource;
-//    }
-//
-//    public void setProjectToResource(Set<ProjectToResource> projectToResource) {
-//        this.projectToResource = projectToResource;
-//    }
+    public User getUser() {return user; }
+
+    public void setUser(User user) {this.user = user;}
+
+    public Set<ProjectColumn> getProjectColumns() {return projectColumns;}
+
+    public void setProjectColumns(Set<ProjectColumn> projectColumns) { this.projectColumns = projectColumns; }
+
+    public Set<ProjectToResource> getProjectToResources() {return projectToResources;}
+
+    public void setProjectToResources(Set<ProjectToResource> projectToResources) {this.projectToResources = projectToResources; }
 
     @Override
     public String toString() {

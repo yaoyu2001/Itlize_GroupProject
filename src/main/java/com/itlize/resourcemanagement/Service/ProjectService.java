@@ -11,4 +11,5 @@ public interface ProjectService {
     public Project save (Project project);
 
     public void deleteById(Integer Id);
+    List<Project> findOneByUserId(Integer id);
     }

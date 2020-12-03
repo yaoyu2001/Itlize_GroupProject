@@ -32,5 +32,9 @@ public class ProjectServiceImp implements ProjectService {
         repository.deleteById(Id);
     }
 
+    @Override
+    public List<Project> findOneByUserId(Integer Id) {
+        return repository.findOneByUserId(Id);
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.itlize.resourcemanagement.Service.imp;
 
-import com.itlize.resourcemanagement.DAO.ResourceRepository;
+import com.itlize.resourcemanagement.DAO.ResourceDAO;
 import com.itlize.resourcemanagement.entity.Resource;
 import com.itlize.resourcemanagement.Service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ResourceServiceImpl implements ResourceService{
 
     @Autowired
-    private ResourceRepository resourceDao;
+    private ResourceDAO resourceDao;
 
     @Override
     public Resource findOneById( Integer Id) {
