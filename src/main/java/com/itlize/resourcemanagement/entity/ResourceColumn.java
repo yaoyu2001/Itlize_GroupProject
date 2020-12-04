@@ -1,5 +1,7 @@
 package com.itlize.resourcemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,12 +23,13 @@ public class ResourceColumn {
   @Column(name = "resource_column_type")
   private ColumnType columnType;
 
+  @JsonIgnore
   @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
   @JoinColumn(name="resource_id")
   private Resource resource;
 
-
+  @JsonIgnore
   @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
   @JoinColumn(name="project_id")
