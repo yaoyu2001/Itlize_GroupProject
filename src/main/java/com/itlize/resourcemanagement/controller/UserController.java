@@ -8,6 +8,7 @@ import com.itlize.resourcemanagement.Service.UserService;
 import com.itlize.resourcemanagement.util.JwtUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -30,6 +31,7 @@ public class UserController {
     @Autowired
     private MyUserDetailsService userDetailsService;
 
+    @Qualifier ("userServiceImp")
     @Autowired
     private UserService service;
 

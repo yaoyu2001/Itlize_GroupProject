@@ -20,4 +20,9 @@ public interface ProjectDAO extends JpaRepository<Project, Integer>{
     public void addColumnForProject(String columnName, String columnValue, ResourceColumn.ColumnType columnType,
                                     Resource resource_id, Project project_id);
 
+
+    @Query(value = "SELECT * FROM project WHERE project_name=?", nativeQuery = true)
+    public Project findByProject_name(String name);
+
+
 }

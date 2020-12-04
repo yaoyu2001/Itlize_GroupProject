@@ -10,6 +10,8 @@ import java.util.List;
 public interface ResourceService {
     public Resource findOneById( Integer Id);
 
+    public Resource findResById( Integer Id);
+
     List<Resource> findAll();
 
     public Resource save( Resource luckymoney);
