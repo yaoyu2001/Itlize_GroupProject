@@ -1,9 +1,13 @@
 package com.itlize.resourcemanagement.test;
 
 import com.itlize.resourcemanagement.DAO.ResourceDAO;
+import com.itlize.resourcemanagement.DAO.UserDAO;
 import com.itlize.resourcemanagement.Service.ResourceService;
+import com.itlize.resourcemanagement.Service.UserService;
 import com.itlize.resourcemanagement.Service.imp.ResourceServiceImpl;
+import com.itlize.resourcemanagement.Service.imp.UserServiceImp;
 import com.itlize.resourcemanagement.entity.Resource;
+import com.itlize.resourcemanagement.entity.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,42 +22,44 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 
 
+
+
+
 @RunWith (SpringRunner.class)
-public class ResourceServiceTest {
+public class UserServiceTest {
+
 
     @TestConfiguration
     static class ResourceTestServiceContextConfiguration {
 
         @Bean
-        public ResourceService resourceService() {
-            return new ResourceServiceImpl();
+        public UserService resourceService() {
+            return new UserServiceImp();
         }
     }
 
     @Autowired
-    private ResourceService resourceService;
+    private UserService userService;
 
     @MockBean
-    private ResourceDAO resourceRepository;
+    private UserDAO userDAO;
 
     @Before
     public void setUp() {
         Date d = new Date(System.currentTimeMillis());
-        Resource wood = new Resource(123, "wood", false, 123456, d,d);
+        User user = new User("yyao", "123456",d,d,"yyao@gmail.com","Yongchang","Yao");
 
-        Mockito.when(resourceRepository.findByResourceCode(123))
-                .thenReturn(wood);
+        Mockito.when(userDAO.findUserByUsername("yyao"))
+                .thenReturn(user);
     }
 
     // write test cases here
     @Test
     public void testResourceService() {
-        String name = "wood";
-        Integer id = 123;
+        String name = "yyao";
 
-        Resource found = resourceService.findResById(id);
+        User found = userService.findUserByUsername("yyao");
         System.out.println(found);
-        Assert.assertEquals(found.getResourceName(), name);
-        Assert.assertEquals(found.getResourceName(), name);
+        Assert.assertEquals(found.getUserName(), name);
     }
 }

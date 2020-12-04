@@ -8,6 +8,7 @@ import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ProjectToResource;
 import com.itlize.resourcemanagement.entity.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,11 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
 
     @Autowired
     ProjectToResourceDAO repository;
+
     @Autowired
     ResourceService resourceService;
+
+    @Qualifier ("projectServiceImp")
     @Autowired
     ProjectService projectService;
 
@@ -53,7 +57,6 @@ public class ProjectToResourceServiceImp implements ProjectToResourceService {
     public void deleteProjectResource(Integer id) {
         repository.deleteById(id);
     }
-
 
 }
 

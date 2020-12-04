@@ -1,7 +1,9 @@
 package com.itlize.resourcemanagement.test;
 
 import com.itlize.resourcemanagement.DAO.ResourceDAO;
+import com.itlize.resourcemanagement.DAO.UserDAO;
 import com.itlize.resourcemanagement.entity.Resource;
+import com.itlize.resourcemanagement.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +18,13 @@ import java.util.Optional;
 
 @RunWith (SpringRunner.class)
 @DataJpaTest
-public class ResourceDAOTest {
+public class UserDAOTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private ResourceDAO resourceRepository;
+    private UserDAO userDAO;
 
     // write test cases here
     @Test
@@ -30,14 +32,14 @@ public class ResourceDAOTest {
         // given
 
         Date d = new Date(System.currentTimeMillis());
-        Resource wood = new Resource(123, "wood", false, 123456, d,d);
+        User user = new User("yyao", "123456",d,d,"yyao@gmail.com","Yongchang","Yao");
 
-        entityManager.persist(wood);
+        entityManager.persist(user);
         entityManager.flush();
 
-        Resource found = resourceRepository.findById(wood.getResourceCode()).get();
-        Assert.assertEquals(found.getResourceName(), wood.getResourceName());
-        Assert.assertEquals(found.getResourceCode(), wood.getResourceCode());
+        User found = userDAO.findUserByUsername(user.getUserName());
+        Assert.assertEquals(found.getUserName(), user.getUserName());
+
 
     }
 
