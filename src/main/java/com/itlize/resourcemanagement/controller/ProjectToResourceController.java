@@ -7,6 +7,7 @@ import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ProjectToResource;
 import com.itlize.resourcemanagement.entity.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ProjectToResourceController {
     @Autowired
     ProjectToResourceService projectToResourceService;
+    @Qualifier ("projectServiceImp")
     @Autowired
     ProjectService projectService;
     @Autowired

@@ -39,6 +39,7 @@ public class UserServiceImp implements UserService {
     public void deleteById(Integer Id){
         userDAO.deleteById(Id);
     }
+
     @Override
     public User findUserByUsername(String name){return userDAO.findUserByUsername(name);}
 

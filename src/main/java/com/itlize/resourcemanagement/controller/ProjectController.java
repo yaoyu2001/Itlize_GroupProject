@@ -4,6 +4,7 @@ import com.itlize.resourcemanagement.Service.ProjectService;
 import com.itlize.resourcemanagement.entity.Project;
 import com.itlize.resourcemanagement.entity.ResourceColumn;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 public class ProjectController {
 
+    @Qualifier ("projectServiceImp")
     @Autowired
     private ProjectService service;
 

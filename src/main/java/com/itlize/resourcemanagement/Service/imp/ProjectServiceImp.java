@@ -7,7 +7,7 @@ import com.itlize.resourcemanagement.entity.ResourceColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itlize.resourcemanagement.DAO.ProjectDAO;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -46,6 +46,11 @@ public class ProjectServiceImp implements ProjectService {
                                     ResourceColumn.ColumnType columnType, Resource resource_id, Project project_id) {
         repository.addColumnForProject(columnName,columnValue,columnType,resource_id,project_id);
 
+    }
+  
+      @Override
+    public Project findOneByProjectName( String name ) {
+        return repository.findByProject_name(name);
     }
 
 

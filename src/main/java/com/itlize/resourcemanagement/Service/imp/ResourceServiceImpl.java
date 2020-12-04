@@ -25,6 +25,11 @@ public class ResourceServiceImpl implements ResourceService{
     }
 
     @Override
+    public Resource findResById( Integer Id) {
+        return resourceDao.findByResourceCode(Id);
+    }
+
+    @Override
     public List<Resource> findAll() {
         return resourceDao.findAll();
     }
