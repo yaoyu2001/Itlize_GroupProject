@@ -20,6 +20,8 @@ public interface ProjectService {
     public void addColumnForProject(String columnName, String columnValue, ResourceColumn.ColumnType columnType,
                                     Resource resource_id, Project project_id);
 
-    public Project findOneByProjectName( String name);
+
+    public Project findOneByProjectName(String name);
+
 
 }

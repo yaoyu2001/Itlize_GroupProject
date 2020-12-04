@@ -47,9 +47,11 @@ public class ProjectServiceImp implements ProjectService {
         repository.addColumnForProject(columnName,columnValue,columnType,resource_id,project_id);
 
     }
-
-    @Override
+  
+      @Override
     public Project findOneByProjectName( String name ) {
         return repository.findByProject_name(name);
     }
+
+
 }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ResourceDAO extends JpaRepository<Resource, Integer>{
 
+
     public Resource findByResourceCode(Integer id);
+
 
     @Query(value = "INSERT INTO resource_column (resource_column_name,resource_column_value," +
             "resource_column_type,resource_id,project_id)" +
