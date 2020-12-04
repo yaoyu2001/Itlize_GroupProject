@@ -41,41 +41,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User create(@RequestParam("username") String username,
-                       @RequestParam("Password") String password,
-                       @RequestParam("role") User.Role role,
-                       @RequestParam("Email") String email,
-                       @RequestParam("First Name") String Fname,
-                       @RequestParam("Last Name") String Lname) {
-        User testuser = service.findUserByUsername(username);
-        if (testuser == null){
-            User user = new User();
-            user.setUserName(username);
-            user.setPassword(password);
-            user.setRole(role);
-            user.setEmail(email);
-            user.setFirst_name(Fname);
-            user.setLast_name(Lname);
-            return service.save(user);}
-        else {
-            return testuser;}
+    public User create(@RequestBody User testuser) {
+
+        return service.save(testuser);
     }
 
     @PostMapping("/UpdateUser")
-    public User update(@RequestParam("username") String username,
-                       @RequestParam("Password") String password,
-                       @RequestParam("role") User.Role role,
-                       @RequestParam("Email") String email,
-                       @RequestParam("First Name") String Fname,
-                       @RequestParam("Last Name") String Lname){
-        User user = service.findUserByUsername(username);
-        user.setUserName(username);
-        user.setPassword(password);
-        user.setRole(role);
-        user.setEmail(email);
-        user.setFirst_name(Fname);
-        user.setLast_name(Lname);
-
+    public User update(@RequestBody User user){
         return service.save(user);
     }
 
