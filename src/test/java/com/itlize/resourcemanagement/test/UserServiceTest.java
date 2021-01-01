@@ -47,7 +47,7 @@ public class UserServiceTest {
     @Before
     public void setUp() {
         Date d = new Date(System.currentTimeMillis());
-        User user = new User("yyao", "123456",d,d,"yyao@gmail.com","Yongchang","Yao");
+        User user = new User("yyao", "123456",d,d);
 
         Mockito.when(userDAO.findUserByUsername("yyao"))
                 .thenReturn(user);

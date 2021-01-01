@@ -32,7 +32,7 @@ public class UserDAOTest {
         // given
 
         Date d = new Date(System.currentTimeMillis());
-        User user = new User("yyao", "123456",d,d,"yyao@gmail.com","Yongchang","Yao");
+        User user = new User("yyao", "123456",d,d);
 
         entityManager.persist(user);
         entityManager.flush();

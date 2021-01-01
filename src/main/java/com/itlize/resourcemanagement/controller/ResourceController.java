@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
+@RequestMapping("resources")
 public class ResourceController {
 
     @Qualifier ("resourceServiceImpl")
     @Autowired
     private ResourceService service;
 
-
-    @GetMapping("/resources")
+    @GetMapping("/all")
     public List<Resource> list() {
         return service.findAll();
     }
@@ -33,13 +33,13 @@ public class ResourceController {
         return service.save(resource);
     }
 
-    @GetMapping("/resources/{id}")
+    @GetMapping("/{id}")
     public Resource findById( @PathVariable("id") Integer id) {
         return service.findOneById(id);
     }
 
 
-    @PutMapping("/resources/{id}")
+    @PutMapping("/{id}")
     public Resource update( @PathVariable("id") Integer id,
                             @RequestParam("name") String name) {
         Resource resource = service.findOneById(id);
@@ -48,13 +48,13 @@ public class ResourceController {
     }
 
 
-    @DeleteMapping("/resources/{id}")
+    @DeleteMapping("/{id}")
     public void deleteResource(@PathVariable("id") Integer id){
         Resource resource = service.findOneById(id);
         service.deleteById(id);
     }
 
-    @PostMapping("/resources/addColumn")
+    @PostMapping("/addColumn")
     public void addColumn(@RequestBody ResourceColumn resourceColumn){
         service.addColumnForResource(resourceColumn.getColumnName(),resourceColumn.getColumnValue(),
                 resourceColumn.getColumnType(),resourceColumn.getResource());

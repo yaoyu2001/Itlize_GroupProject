@@ -43,18 +43,6 @@ public class User {
     @Column (name = "update_time",nullable = false)
     private Date update_time;
 
-    @Column (name = "main_image")
-    private String mainImage;
-
-    @Column (name = "email")
-    private String email;
-
-    @Column (name = "first_name", nullable = false)
-    private String first_name;
-
-    @Column (name = "last_name", nullable = false)
-    private String last_name;
-
     @OneToMany(mappedBy = "user")
     private Set<Project> UserToProjectSet = new HashSet<>();
 
@@ -62,16 +50,14 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, Date create_time, Date update_time, String email, String first_name, String last_name) {
+    public User(String username, String password, Date create_time, Date update_time) {
         this.username = username;
         this.password = password;
         this.create_time = create_time;
         this.update_time = update_time;
-        this.email = email;
-        this.first_name = first_name;
-        this.last_name = last_name;
     }
 
+    public int getUserId() {return userId;}
     public String getUserName() {
         return username;
     }
@@ -99,30 +85,6 @@ public class User {
     }
     public void setUpdate_time(Date update_time) {
         this.update_time = update_time;
-    }
-    public String getMainImage() {
-        return mainImage;
-    }
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getFirst_name() {
-        return first_name;
-    }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-    public String getLast_name() {
-        return last_name;
-    }
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
     }
 
     public Set<Project> getUserToProjectSet() {

@@ -10,32 +10,17 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_name")})
+@Table(name = "resource", uniqueConstraints = {@UniqueConstraint (columnNames = "resource_code")})
 @EntityListeners(AuditingEntityListener.class)
 public class Resource {
 
     @Id
+    @Column(name = "resource_code")
 //    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int resourceCode;
 
     @Column(name = "resource_name")
     private String resourceName;
-
-    @Column(name = "editable")
-    private boolean editable = false;
-
-
-    @Column(name = "item_id")
-    private int itemId;
-
-    @CreatedDate
-    @Column (name = "create_time",updatable = false, nullable = false)
-    private Date createTime;
-
-    @LastModifiedDate
-    @Column (name = "update_time",nullable = false)
-    private Date updateTime;
-
 
     @OneToMany(fetch=FetchType.LAZY,
             mappedBy="resource",
@@ -54,10 +39,6 @@ public class Resource {
                      int itemId, Date createTime, Date updateTime) {
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
-        this.editable = editable;
-        this.itemId = itemId;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
     }
     public int getResourceCode() {
         return resourceCode;
@@ -75,37 +56,6 @@ public class Resource {
         this.resourceName = resourceName;
     }
 
-    public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 
     public List<ResourceColumn> getResourceColumn() {
         return ResourceColumn;
